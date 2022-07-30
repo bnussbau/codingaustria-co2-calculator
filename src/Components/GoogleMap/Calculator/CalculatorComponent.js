@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./CalculatorComponent.module.scss";
+import Map from "../Map";
 import Confetti from "./Confetti";
 const mockData = {
   route: [
@@ -41,14 +42,14 @@ const Co2Display = ({ value, duration = 10 }) => {
 const CalculatorComponent = () => {
   const [start, setStart] = useState(false);
   const { route, merchant, customer } = mockData;
-  // useEffect(() => {
-  //   setInterval(() => {
-  //     setStart(!start);
-  //   }, 2000);
-  // }, []);
-
+  const handleConfetti = () => {
+    setStart(!start);
+    setInterval(() => {
+      setStart(false);
+    }, 3000);
+  };
   return (
-    <div style={{ width: "100%" }}>
+    <div>
       <div className={styles.container}>
         <div className={styles.displayWrapper}>
           <p className={styles.title}>
@@ -63,8 +64,8 @@ const CalculatorComponent = () => {
           <Co2Display value={merchant?.co2SavedKg} duration={5} />
         </div>
       </div>
-      <div className={styles.mapWrapper} onClick={() => setStart(!start)}>
-        THIS IS THE MAP HERE
+      <div className={styles.mapWrapper} onClick={handleConfetti}>
+        <Map />
       </div>
       {start && <Confetti start={start} />}
     </div>

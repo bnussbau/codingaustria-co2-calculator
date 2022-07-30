@@ -1,12 +1,10 @@
 import logo from "./logo.svg";
 import "./App.scss";
-import CalculatorComponent from "./Component/Calculator/CalculatorComponent";
-import Map from "./Component/Map/Map";
+import CalculatorComponent from "./Components/GoogleMap/Calculator/CalculatorComponent";
 function App() {
   return (
     <div className="App">
       <CalculatorComponent />
-      <Map />
     </div>
   );
 }
