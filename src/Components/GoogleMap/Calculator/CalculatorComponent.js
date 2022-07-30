@@ -53,19 +53,25 @@ const CalculatorComponent = () => {
       <div className={styles.container}>
         <div className={styles.displayWrapper}>
           <p className={styles.title}>
-            The amount of CO&#178; You saved with this purchase
+            The amount of CO&#178; you would spent if you drive to the shop.
           </p>
           <Co2Display value={customer?.co2SavedKg} duration={120} />
         </div>
         <div className={styles.displayWrapper}>
           <p className={styles.title}>
-            The amount of CO&#178; the shop saved the last month
+            The amount of CO&#178; you saved with this purchase.
+          </p>
+          <Co2Display value={customer?.co2SavedKg} duration={120} />
+        </div>
+        <div className={styles.displayWrapper}>
+          <p className={styles.title}>
+            The amount of CO&#178; the shop saved the last month.
           </p>
           <Co2Display value={merchant?.co2SavedKg} duration={5} />
         </div>
       </div>
       <div className={styles.mapWrapper} onClick={handleConfetti}>
-        <Map />
+        <Map route={route} />
       </div>
       {start && <Confetti start={start} />}
     </div>

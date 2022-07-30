@@ -1,8 +1,8 @@
-import React from 'react';
-import GoogleMapReact from 'google-map-react';
-import Marker from './Marker';
+import React from "react";
+import GoogleMapReact from "google-map-react";
+import Marker from "./Marker";
 
-const SimpleMap = () => {
+const SimpleMap = ({ route }) => {
   const defaultProps = {
     center: {
       lat: 47.7489014,
@@ -42,7 +42,7 @@ const SimpleMap = () => {
   };
   return (
     // Important! Always set the container height explicitly
-    <div style={{ height: '100vh', width: '100%' }}>
+    <div style={{ height: "100vh", width: "100%" }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY }}
         defaultCenter={defaultProps.center}
