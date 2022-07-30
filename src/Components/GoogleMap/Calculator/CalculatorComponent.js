@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./CalculatorComponent.module.scss";
 import Map from "../Map";
+import tree from "../../../ecosystem.png";
 import Confetti from "./Confetti";
 const mockData = {
   route: [
@@ -34,7 +35,7 @@ const Co2Display = ({ value, duration = 10 }) => {
   }, [count]);
   return (
     <div className={styles.Co2Display}>
-      <p>{count}</p>
+      <p>{count}kg</p>
     </div>
   );
 };
@@ -48,6 +49,7 @@ const CalculatorComponent = () => {
       setStart(false);
     }, 3000);
   };
+
   return (
     <div>
       <div className={styles.container}>
@@ -62,12 +64,28 @@ const CalculatorComponent = () => {
             The amount of CO&#178; you saved with this purchase.
           </p>
           <Co2Display value={customer?.co2SavedKg} duration={120} />
+          <img src={tree} className={styles.tree} alt="Ecosystem" />
         </div>
         <div className={styles.displayWrapper}>
           <p className={styles.title}>
             The amount of CO&#178; the shop saved the last month.
           </p>
           <Co2Display value={merchant?.co2SavedKg} duration={5} />
+          <img src={tree} className={styles.tree} alt="Ecosystem" />
+          <img src={tree} className={styles.tree} alt="Ecosystem" />
+          <img src={tree} className={styles.tree} alt="Ecosystem" />
+        </div>
+        <div className={styles.displayWrapper}>
+          <p className={styles.title}>
+            The amount of CO&#178; the shop saved the last month.
+          </p>
+          <Co2Display value={merchant?.co2SavedKg} duration={5} />
+          <img src={tree} className={styles.tree} alt="Ecosystem" />
+          <img src={tree} className={styles.tree} alt="Ecosystem" />
+          <img src={tree} className={styles.tree} alt="Ecosystem" />
+          <img src={tree} className={styles.tree} alt="Ecosystem" />
+          <img src={tree} className={styles.tree} alt="Ecosystem" />
+          <img src={tree} className={styles.tree} alt="Ecosystem" />
         </div>
       </div>
       <div className={styles.mapWrapper} onClick={handleConfetti}>
