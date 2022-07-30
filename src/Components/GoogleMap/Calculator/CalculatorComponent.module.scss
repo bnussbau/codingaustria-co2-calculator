@@ -10,12 +10,15 @@
   height: 100%;
   @include fade-in-slow;
 }
-.displayWrapper {
+.displayWrapper,
+.pickupWrapper {
   border: 1px solid rgb(216, 225, 225);
   border-radius: 5px;
   padding: 10px;
 }
-
+.pickupWrapper {
+  @include pulse;
+}
 .Co2Display {
   display: flex;
   gap: 1rem;
@@ -34,9 +37,13 @@
   width: 100%;
 }
 .tree {
-  width: 40px;
-  height: 40px;
+  width: 25px;
+  height: 25px;
   @include pullUp;
+  @media (min-width: 450px) {
+    width: 40px;
+    height: 40px;
+  }
 }
 .mapWrapper {
   width: 100%;

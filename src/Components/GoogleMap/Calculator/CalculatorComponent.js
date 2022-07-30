@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import styles from './CalculatorComponent.module.scss';
-import Map from '../Map';
-import tree from '../../../ecosystem.png';
-import Confetti from './Confetti';
+import React, { useEffect, useState } from "react";
+import styles from "./CalculatorComponent.module.scss";
+import Map from "../Map";
+import tree from "../../../ecosystem.png";
+import Confetti from "./Confetti";
 const mockData = {
   route: [
     {
@@ -36,7 +36,7 @@ const Co2Display = ({ value, duration = 10 }) => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       if (count < value) {
-        setCount(prev => prev + 1);
+        setCount((prev) => prev + 1);
       }
     }, duration);
 
@@ -49,7 +49,7 @@ const Co2Display = ({ value, duration = 10 }) => {
   );
 };
 
-const treeImage = count => {
+const treeImage = (count) => {
   var arr = [...Array(count).keys()];
   return arr.fill(<img src={tree} className={styles.tree} alt="Ecosystem" />);
 };
@@ -63,16 +63,28 @@ const CalculatorComponent = () => {
       setStart(false);
     }, 3000);
   };
+  const url = document.location.href;
+  const urlParams = new URL(url);
+
+  const pickup = urlParams.searchParams.get("pickwalk");
+  const delivery = urlParams.searchParams.get("delivery");
+  const bundle = urlParams.searchParams.get("bundle");
+  const total = urlParams.searchParams.get("total");
 
   return (
     <div>
       <div className={styles.container}>
-        <div className={styles.displayWrapper}>
-          <p className={styles.title}>
-            The amount of CO&#178; you would spent if you drive to the shop.
-          </p>
-          <Co2Display value={customer?.co2SavedKg} duration={120} />
-        </div>
+        {!!+pickup && (
+          <div className={styles.pickupWrapper}>
+            <p className={styles.title}>
+              Congrats!! The store is less than 10 minutes walkaway from you .
+            </p>
+            <div className={styles.treeWrapper}>
+              <Co2Display value={0} duration={120} />
+              {treeImage(6)}
+            </div>
+          </div>
+        )}
         <div className={styles.displayWrapper}>
           <p className={styles.title}>
             The amount of CO&#178; you saved with this purchase.
@@ -84,7 +96,7 @@ const CalculatorComponent = () => {
         </div>
         <div className={styles.displayWrapper}>
           <p className={styles.title}>
-            The amount of CO&#178; the shop saved the last month.
+            The amount of CO&#178; the store saved the last month.
           </p>
           <div className={styles.treeWrapper}>
             <Co2Display value={merchant?.co2SavedKg} duration={5} />
@@ -93,7 +105,7 @@ const CalculatorComponent = () => {
         </div>
         <div className={styles.displayWrapper}>
           <p className={styles.title}>
-            The amount of CO&#178; the shop saved the last month.
+            The amount of CO&#178; the store saved the last month.
           </p>
           <div className={styles.treeWrapper}>
             <Co2Display value={merchant?.co2SavedKg} duration={5} />
