@@ -63,29 +63,35 @@ const CalculatorComponent = () => {
           <p className={styles.title}>
             The amount of CO&#178; you saved with this purchase.
           </p>
-          <Co2Display value={customer?.co2SavedKg} duration={120} />
-          <img src={tree} className={styles.tree} alt="Ecosystem" />
+          <div className={styles.treeWrapper}>
+            <Co2Display value={customer?.co2SavedKg} duration={120} />
+            <img src={tree} className={styles.tree} alt="Ecosystem" />
+          </div>
         </div>
         <div className={styles.displayWrapper}>
           <p className={styles.title}>
             The amount of CO&#178; the shop saved the last month.
           </p>
-          <Co2Display value={merchant?.co2SavedKg} duration={5} />
-          <img src={tree} className={styles.tree} alt="Ecosystem" />
-          <img src={tree} className={styles.tree} alt="Ecosystem" />
-          <img src={tree} className={styles.tree} alt="Ecosystem" />
+          <div className={styles.treeWrapper}>
+            <Co2Display value={merchant?.co2SavedKg} duration={5} />
+            <img src={tree} className={styles.tree} alt="Ecosystem" />
+            <img src={tree} className={styles.tree} alt="Ecosystem" />
+            <img src={tree} className={styles.tree} alt="Ecosystem" />
+          </div>
         </div>
         <div className={styles.displayWrapper}>
           <p className={styles.title}>
             The amount of CO&#178; the shop saved the last month.
           </p>
-          <Co2Display value={merchant?.co2SavedKg} duration={5} />
-          <img src={tree} className={styles.tree} alt="Ecosystem" />
-          <img src={tree} className={styles.tree} alt="Ecosystem" />
-          <img src={tree} className={styles.tree} alt="Ecosystem" />
-          <img src={tree} className={styles.tree} alt="Ecosystem" />
-          <img src={tree} className={styles.tree} alt="Ecosystem" />
-          <img src={tree} className={styles.tree} alt="Ecosystem" />
+          <div className={styles.treeWrapper}>
+            <Co2Display value={merchant?.co2SavedKg} duration={5} />
+            <img src={tree} className={styles.tree} alt="Ecosystem" />
+            <img src={tree} className={styles.tree} alt="Ecosystem" />
+            <img src={tree} className={styles.tree} alt="Ecosystem" />
+            <img src={tree} className={styles.tree} alt="Ecosystem" />
+            <img src={tree} className={styles.tree} alt="Ecosystem" />
+            <img src={tree} className={styles.tree} alt="Ecosystem" />
+          </div>
         </div>
       </div>
       <div className={styles.mapWrapper} onClick={handleConfetti}>
