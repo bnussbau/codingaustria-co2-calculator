@@ -31,7 +31,8 @@ const cords = [
   { lat: 48.20628991639443, lng: 16.34524805104454 },
 ];
 
-const Co2Display = ({ value, duration = 10 }) => {
+const Co2Display = ({ value, duration = 5 }) => {
+  console.log("valuess", value);
   const [count, setCount] = useState(0);
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -68,38 +69,42 @@ const CalculatorComponent = () => {
 
   const pickup = urlParams.searchParams.get("pickwalk");
   const delivery = urlParams.searchParams.get("delivery");
-  const bundle = urlParams.searchParams.get("bundle");
+  const [day, bundle] = urlParams.searchParams.get("bundle")?.split(";");
   const total = urlParams.searchParams.get("total");
 
   return (
     <div>
       <div className={styles.container}>
+        {/* walking option */}
         {!!+pickup && (
           <div className={styles.pickupWrapper}>
             <p className={styles.title}>
               Congrats!! The store is less than 10 minutes walkaway from you .
             </p>
             <div className={styles.treeWrapper}>
-              <Co2Display value={0} duration={120} />
+              <Co2Display value={0} duration={5} />
               {treeImage(6)}
             </div>
           </div>
         )}
+        {/* delivery option */}
         <div className={styles.displayWrapper}>
           <p className={styles.title}>
             The amount of CO&#178; you saved with this purchase.
           </p>
           <div className={styles.treeWrapper}>
-            <Co2Display value={customer?.co2SavedKg} duration={120} />
+            <Co2Display value={delivery} duration={5} />
             {treeImage(1)}
           </div>
         </div>
+        {/* bundle option */}
         <div className={styles.displayWrapper}>
           <p className={styles.title}>
-            The amount of CO&#178; the store saved the last month.
+            By choosing the delivery to arrive in {day} days, this amount of
+            CO&#178; will be saved.
           </p>
           <div className={styles.treeWrapper}>
-            <Co2Display value={merchant?.co2SavedKg} duration={5} />
+            <Co2Display value={bundle} duration={10} />
             {treeImage(3)}
           </div>
         </div>
@@ -108,7 +113,7 @@ const CalculatorComponent = () => {
             The amount of CO&#178; the store saved the last month.
           </p>
           <div className={styles.treeWrapper}>
-            <Co2Display value={merchant?.co2SavedKg} duration={5} />
+            <Co2Display value={total} duration={2} />
             {treeImage(6)}
           </div>
         </div>
