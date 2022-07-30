@@ -1,28 +1,17 @@
 import React from 'react';
+import houseImg from '../../house.png';
+import shopImg from '../../shop.png';
 
-const Marker = ({ text, ...props }) => (
-  <div
-    {...props}
-    style={{
-      position: 'absolute',
-      top: '50%',
-      left: '50%',
-      width: '48px',
-      height: '48px',
-      backgroundColor: '#730000',
-      border: '2px solid #FFFFFF',
-      borderRadius: '50%',
-      transform: 'translate(-50%, -50%)',
-      color: '#FFFFFF',
-      fontSize: '14px',
-      fontWeight: 'bold',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      boxShadow: '6px 4px 30px 7px rgba(0,0,0,0.57)',
-    }}
-  >
-    {text}
+import styles from './Marker.module.scss';
+
+const Marker = ({ text, firstElement, lastElement, ...props }) => (
+  <div {...props}>
+    {firstElement && (
+      <img src={houseImg} className={styles.tree} alt="Ecosystem" />
+    )}
+    {lastElement && (
+      <img src={shopImg} className={styles.tree} alt="Ecosystem" />
+    )}
   </div>
 );
 

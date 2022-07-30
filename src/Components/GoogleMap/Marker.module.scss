@@ -1,0 +1,14 @@
+@import '../../../variables.scss';
+
+.tree {
+  width: 42px;
+  height: 42px;
+  position: absolute;
+  top: -25px;
+  left: -20px;
+  box-shadow: 5px 0px 20px 10px rgb(0 0 0 / 50%);
+  border: solid 2px white;
+  border-radius: 50%;
+  padding: 2px;
+  @include pullUp;
+}

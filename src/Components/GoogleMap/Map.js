@@ -1,48 +1,54 @@
-import React from "react";
-import GoogleMapReact from "google-map-react";
-import Marker from "./Marker";
+import React from 'react';
+import GoogleMapReact from 'google-map-react';
+import Marker from './Marker';
 
-const SimpleMap = ({ route }) => {
+const SimpleMap = ({ cords }) => {
   const defaultProps = {
-    center: {
-      lat: 47.7489014,
-      lng: 13.2530003,
-    },
-    zoom: 11,
+    center: cords[0],
+    zoom: 14,
   };
 
   const apiIsLoaded = (map, maps) => {
     const directionsService = new maps.DirectionsService();
+    const directionsDisplay = new maps.DirectionsRenderer();
 
-    const directionsRenderer = new maps.DirectionsRenderer();
-    directionsRenderer.setMap(map);
-    const origin = {
-      lat: 48.215739883024661,
-      lng: 16.370281800013927,
-    };
-    const destination = {
-      lat: 48.215739883024661,
-      lng: 17.370281800013927,
-    };
+    const origin = cords[0];
+    const destination = cords[cords.length - 1];
+
+    const waypoints = cords.map(cord => {
+      return {
+        location: {
+          lat: cord.lat,
+          lng: cord.lng,
+        },
+      };
+    });
 
     directionsService.route(
       {
         origin,
         destination,
-        travelMode: maps.TravelMode.DRIVING,
+        travelMode: 'DRIVING',
+        waypoints,
+        optimizeWaypoints: true,
       },
-      (result, status) => {
+      (response, status) => {
         if (status === maps.DirectionsStatus.OK) {
-          directionsRenderer.setDirections(result);
+          directionsDisplay.setDirections(response);
+
+          const routePolyline = new maps.Polyline({
+            path: response.routes[0].overview_path,
+          });
+          routePolyline.setMap(map);
         } else {
-          console.error(`error fetching directions ${result}`);
+          console.error(`error fetching directions ${response}`);
         }
       }
     );
   };
   return (
     // Important! Always set the container height explicitly
-    <div style={{ height: "100vh", width: "100%" }}>
+    <div style={{ height: '100vh', width: '100%' }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY }}
         defaultCenter={defaultProps.center}
@@ -50,8 +56,16 @@ const SimpleMap = ({ route }) => {
         yesIWantToUseGoogleMapApiInternals
         onGoogleApiLoaded={({ map, maps }) => apiIsLoaded(map, maps)}
       >
-        <Marker lat={48.215739883024661} lng={16.370281800013927} text="You" />
-        <Marker lat={48.215739883024661} lng={17.370281800013927} text="Shop" />
+        {cords.map((cord, index) => {
+          return (
+            <Marker
+              lat={cord.lat}
+              lng={cord.lng}
+              firstElement={index === 0}
+              lastElement={cords.length - 1 === index}
+            />
+          );
+        })}
       </GoogleMapReact>
     </div>
   );

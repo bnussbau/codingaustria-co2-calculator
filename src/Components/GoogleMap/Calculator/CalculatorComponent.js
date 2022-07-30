@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import styles from "./CalculatorComponent.module.scss";
-import Map from "../Map";
-import tree from "../../../ecosystem.png";
-import Confetti from "./Confetti";
+import React, { useEffect, useState } from 'react';
+import styles from './CalculatorComponent.module.scss';
+import Map from '../Map';
+import tree from '../../../ecosystem.png';
+import Confetti from './Confetti';
 const mockData = {
   route: [
     {
@@ -22,12 +22,21 @@ const mockData = {
   },
 };
 
+const cords = [
+  { lat: 48.215739883024661, lng: 16.370281800013927 },
+  /*  { lat: 48.23254325432884, lng: 16.347499612663768 },
+  { lat: 48.255521473262206, lng: 16.34578299896641 },
+  { lat: 48.15298340794733, lng: 16.36167830749079 },
+  { lat: 48.240235287643756, lng: 16.485153472778876 }, */
+  { lat: 48.20628991639443, lng: 16.34524805104454 },
+];
+
 const Co2Display = ({ value, duration = 10 }) => {
   const [count, setCount] = useState(0);
   useEffect(() => {
     const timeout = setTimeout(() => {
       if (count < value) {
-        setCount((prev) => prev + 1);
+        setCount(prev => prev + 1);
       }
     }, duration);
 
@@ -89,7 +98,7 @@ const CalculatorComponent = () => {
         </div>
       </div>
       <div className={styles.mapWrapper} onClick={handleConfetti}>
-        <Map route={route} />
+        <Map cords={cords} />
       </div>
       {start && <Confetti start={start} />}
     </div>
