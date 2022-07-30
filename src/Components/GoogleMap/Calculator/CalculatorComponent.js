@@ -3,6 +3,8 @@ import styles from "./CalculatorComponent.module.scss";
 import Map from "../Map";
 import tree from "../../../ecosystem.png";
 import Confetti from "./Confetti";
+import classNames from "classnames";
+
 const mockData = {
   route: [
     {
@@ -67,6 +69,7 @@ const CalculatorComponent = () => {
   const url = document.location.href;
   const urlParams = new URL(url);
 
+  const deliveryType = urlParams.searchParams.get("deliverytype");
   const pickup = urlParams.searchParams.get("pickwalk");
   const delivery = urlParams.searchParams.get("delivery");
   const [day, bundle] = urlParams.searchParams.get("bundle")?.split(";");
@@ -88,7 +91,11 @@ const CalculatorComponent = () => {
           </div>
         )}
         {/* delivery option */}
-        <div className={styles.displayWrapper}>
+        <div
+          className={classNames(styles.displayWrapper, {
+            [styles.active]: deliveryType === "1",
+          })}
+        >
           <p className={styles.title}>
             The amount of CO&#178; you saved with this purchase.
           </p>
@@ -98,7 +105,11 @@ const CalculatorComponent = () => {
           </div>
         </div>
         {/* bundle option */}
-        <div className={styles.displayWrapper}>
+        <div
+          className={classNames(styles.displayWrapper, {
+            [styles.active]: deliveryType === "2",
+          })}
+        >
           <p className={styles.title}>
             By choosing the delivery to arrive in {day} days, this amount of
             CO&#178; will be saved.
@@ -108,7 +119,11 @@ const CalculatorComponent = () => {
             {treeImage(3)}
           </div>
         </div>
-        <div className={styles.displayWrapper}>
+        <div
+          className={classNames(styles.displayWrapper, {
+            [styles.active]: deliveryType === "3",
+          })}
+        >
           <p className={styles.title}>
             The amount of CO&#178; the store saved the last month.
           </p>

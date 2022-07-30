@@ -15,6 +15,10 @@
   border: 1px solid rgb(216, 225, 225);
   border-radius: 5px;
   padding: 10px;
+  &.active {
+    border: 1px solid $blue;
+    background-color: rgb(231, 242, 240);
+  }
 }
 .pickupWrapper {
   @include pulse;
