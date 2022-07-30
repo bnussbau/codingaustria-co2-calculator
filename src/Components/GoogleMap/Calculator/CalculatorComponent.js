@@ -35,7 +35,7 @@ const cords = [
 
 const Co2Display = ({ value, duration = 5 }) => {
   console.log("valuess", value);
-  const [count, setCount] = useState(value ? 0 : "-");
+  const [count, setCount] = useState(value ? 0 : "- ");
   useEffect(() => {
     const timeout = setTimeout(() => {
       if (count < value) {
@@ -111,8 +111,8 @@ const CalculatorComponent = () => {
           })}
         >
           <p className={styles.title}>
-            By choosing the delivery to arrive in {day} days, this amount of
-            CO&#178; will be saved.
+            By choosing the delivery to arrive in {day || "-"} days, this amount
+            of CO&#178; will be saved.
           </p>
           <div className={styles.treeWrapper}>
             <Co2Display value={bundle} duration={10} />
