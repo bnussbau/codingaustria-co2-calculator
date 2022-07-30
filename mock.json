@@ -1,0 +1,104 @@
+[
+  [
+    {
+      "id": "4c4af4ea-91a1-4775-bc7e-0635ad35b0da",
+      "geometry": {
+        "location": { "lat": "47.3956828472054", "lng": "12.9584792930176" }
+      },
+      "name": "Beekeeping Fersterer - farm sale",
+      "imgUrl": null,
+      "formatted_address": "Hochkönigstraße 83, Maria Alm am Steinernen Meer, 5761, AT"
+    },
+    {
+      "id": "8c4a8e44-9542-4810-93b2-44007795a8a6",
+      "geometry": {
+        "location": { "lat": "47.2962443671507", "lng": "13.5760230846557" }
+      },
+      "name": "Fallhausalm",
+      "imgUrl": "http://resc.deskline.net/images/SBG/1/947cda2d-107d-47b6-babd-722b6f0ec50c/99/image.jpg",
+      "formatted_address": "Winkl 10, Forstau, 5552, AT"
+    },
+    {
+      "id": "4afabc89-57bc-4ea6-ad23-130dfcbf0294",
+      "geometry": { "location": { "lat": "47.7489014", "lng": "13.2530003" } },
+      "name": "Snack bar at bathing beach Hirschpoint",
+      "imgUrl": "http://resc.deskline.net/images/SBG/1/b4634eb2-1bf5-45d8-acda-7df25044a8dc/99/image.jpg",
+      "formatted_address": "Hinterseestraße 130, Faistenau, 5324, AT"
+    }
+  ],
+  [
+    {
+      "id": "1543262",
+      "geometry": { "location": { "lat": "47.389842", "lng": "12.909127" } },
+      "name": "Hike from Unterberg towards Langegg",
+      "imgUrl": "http://img.oastatic.com/img/54720421/.jpg",
+      "formatted_address": "Skibrücke Sonnberg - Aberg, Maria Alm am Steinernen Meer, 5761, AT"
+    },
+    {
+      "id": "15412663",
+      "geometry": { "location": { "lat": "47.157022", "lng": "13.272786" } },
+      "name": "Hüttschlag: Hirschgrubenalm",
+      "imgUrl": "http://img.oastatic.com/img/15412764/.jpg",
+      "formatted_address": "Hüttschlag, Hüttschlag, 5612, AT"
+    },
+    {
+      "id": "1545387",
+      "geometry": { "location": { "lat": "47.276973", "lng": "13.195935" } },
+      "name": "Grossarl: Mooslehenalm",
+      "imgUrl": "http://img.oastatic.com/img/63509181/.jpg",
+      "formatted_address": "Angerwaldstraße, Großarl, 5611, AT"
+    }
+  ],
+  [
+    {
+      "id": "39faef1a-f332-4851-b20f-0ddf0fcd315b",
+      "geometry": {
+        "location": { "lat": "47.4065658733637", "lng": "12.9059422016144" }
+      },
+      "name": "Minigolf",
+      "imgUrl": "http://resc.deskline.net/images/SBG/1/051e4c41-3f27-4b39-bd50-9e0cf1be1947/99/image.jpg",
+      "formatted_address": "Hochkönigstraße 8, Maria Alm am Steinernen Meer, 5761, AT"
+    },
+    {
+      "id": "cde9a8eb-368c-47d9-afa8-030672fc3326",
+      "geometry": { "location": { "lat": "47.2712612", "lng": "12.7587008" } },
+      "name": "Dr. Claudia Griessner",
+      "imgUrl": "http://resc.deskline.net/images/SBG/1/45fa6c95-4af9-449b-ae2e-52a3970d3e74/99/image.jpg",
+      "formatted_address": "Imbachstraße 14/1,  Kaprun, 5710, AT"
+    },
+    {
+      "id": "42a56660-84d8-4f06-8a8d-06ab0170d1da",
+      "geometry": {
+        "location": { "lat": "47.2056336803098", "lng": "12.6866340637207" }
+      },
+      "name": "Ice Camp",
+      "imgUrl": "http://resc.deskline.net/images/SBG/1/6060a5a7-b7e7-4907-b7f0-8e6d45f5f0a6/99/image.jpg",
+      "formatted_address": "Kitzsteinhorn 44,  Kaprun, 5710, AT"
+    }
+  ],
+  [
+    {
+      "id": "ba19b2c6-da84-4406-a2aa-0f9f2cb6b5d0",
+      "geometry": { "location": { "lat": "47.4076324", "lng": "12.901961" } },
+      "name": "Hotel Restaurant Edelweiss",
+      "imgUrl": "http://resc.deskline.net/images/SBG/1/63b8b90b-4471-432e-864c-14b6d152c23e/99/image.jpg",
+      "formatted_address": "Bachstraße 23, Maria Alm am Steinernen Meer, 5761, AT"
+    },
+    {
+      "id": "8c4a8e44-9542-4810-93b2-44007795a8a6",
+      "geometry": {
+        "location": { "lat": "47.2962443671507", "lng": "13.5760230846557" }
+      },
+      "name": "Fallhausalm",
+      "imgUrl": "http://resc.deskline.net/images/SBG/1/947cda2d-107d-47b6-babd-722b6f0ec50c/99/image.jpg",
+      "formatted_address": "Winkl 10, Forstau, 5552, AT"
+    },
+    {
+      "id": "4afabc89-57bc-4ea6-ad23-130dfcbf0294",
+      "geometry": { "location": { "lat": "47.7489014", "lng": "13.2530003" } },
+      "name": "Snack bar at bathing beach Hirschpoint",
+      "imgUrl": "http://resc.deskline.net/images/SBG/1/b4634eb2-1bf5-45d8-acda-7df25044a8dc/99/image.jpg",
+      "formatted_address": "Hinterseestraße 130, Faistenau, 5324, AT"
+    }
+  ]
+]

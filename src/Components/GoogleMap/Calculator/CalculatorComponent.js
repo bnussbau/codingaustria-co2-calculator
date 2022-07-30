@@ -32,9 +32,6 @@ const cords = [
 ];
 
 const Co2Display = ({ value, duration = 10 }) => {
-  const test = new URL(document.location.href).searchParams.get('test');
-  console.log(`buddies ~ Co2Display ~ test`, test);
-
   const [count, setCount] = useState(0);
   useEffect(() => {
     const timeout = setTimeout(() => {
