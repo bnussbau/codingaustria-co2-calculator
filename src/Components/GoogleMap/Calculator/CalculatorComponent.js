@@ -33,7 +33,7 @@ const cords = [
   { lat: 48.20628991639443, lng: 16.34524805104454 },
 ];
 
-const Co2Display = ({ value, duration = 5 }) => {
+const Co2Display = ({ value, duration = 5, isWalking }) => {
   console.log("valuess", value);
   const [count, setCount] = useState(value ? 0 : "- ");
   useEffect(() => {
@@ -47,7 +47,7 @@ const Co2Display = ({ value, duration = 5 }) => {
   }, [count, duration, value]);
   return (
     <div className={styles.Co2Display}>
-      <p>{count}kg</p>
+      <p>{isWalking ? 0 : count}kg</p>
     </div>
   );
 };
@@ -85,7 +85,7 @@ const CalculatorComponent = () => {
               Congrats!! The store is less than 10 minutes walkaway from you .
             </p>
             <div className={styles.treeWrapper}>
-              <Co2Display value={0} duration={5} />
+              <Co2Display isWalking value={0} duration={5} />
               {treeImage(6)}
             </div>
           </div>
