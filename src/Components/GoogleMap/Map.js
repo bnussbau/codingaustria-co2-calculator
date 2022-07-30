@@ -1,6 +1,6 @@
-import React from 'react';
-import GoogleMapReact from 'google-map-react';
-import Marker from './Marker';
+import React from "react";
+import GoogleMapReact from "google-map-react";
+import Marker from "./Marker";
 
 const SimpleMap = ({ cords }) => {
   const defaultProps = {
@@ -15,7 +15,7 @@ const SimpleMap = ({ cords }) => {
     const origin = cords[0];
     const destination = cords[cords.length - 1];
 
-    const waypoints = cords.map(cord => {
+    const waypoints = cords.map((cord) => {
       return {
         location: {
           lat: cord.lat,
@@ -28,7 +28,7 @@ const SimpleMap = ({ cords }) => {
       {
         origin,
         destination,
-        travelMode: 'DRIVING',
+        travelMode: "DRIVING",
         waypoints,
         optimizeWaypoints: true,
       },
@@ -48,7 +48,7 @@ const SimpleMap = ({ cords }) => {
   };
   return (
     // Important! Always set the container height explicitly
-    <div style={{ height: '100vh', width: '100%' }}>
+    <div style={{ height: "100%", width: "100%" }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY }}
         defaultCenter={defaultProps.center}

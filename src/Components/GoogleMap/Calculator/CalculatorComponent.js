@@ -76,7 +76,7 @@ const CalculatorComponent = () => {
   const total = urlParams.searchParams.get("total");
 
   return (
-    <div>
+    <div className={styles.hero}>
       <div className={styles.container}>
         {/* walking option */}
         {!!+pickup && (
