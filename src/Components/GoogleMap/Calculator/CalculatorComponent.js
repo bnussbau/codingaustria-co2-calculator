@@ -35,7 +35,7 @@ const cords = [
 
 const Co2Display = ({ value, duration = 5 }) => {
   console.log("valuess", value);
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(value ? 0 : "-");
   useEffect(() => {
     const timeout = setTimeout(() => {
       if (count < value) {
@@ -72,7 +72,7 @@ const CalculatorComponent = () => {
   const deliveryType = urlParams.searchParams.get("deliverytype");
   const pickup = urlParams.searchParams.get("pickwalk");
   const delivery = urlParams.searchParams.get("delivery");
-  const [day, bundle] = urlParams.searchParams.get("bundle")?.split(";");
+  const [day, bundle] = urlParams.searchParams.get("bundle")?.split(";") || [];
   const total = urlParams.searchParams.get("total");
 
   return (
@@ -129,7 +129,7 @@ const CalculatorComponent = () => {
           </p>
           <div className={styles.treeWrapper}>
             <Co2Display value={total} duration={2} />
-            {treeImage(6)}
+            {treeImage(5)}
           </div>
         </div>
       </div>
