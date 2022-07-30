@@ -32,6 +32,9 @@ const cords = [
 ];
 
 const Co2Display = ({ value, duration = 10 }) => {
+  const test = new URL(document.location.href).searchParams.get('test');
+  console.log(`buddies ~ Co2Display ~ test`, test);
+
   const [count, setCount] = useState(0);
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -41,12 +44,17 @@ const Co2Display = ({ value, duration = 10 }) => {
     }, duration);
 
     return () => clearTimeout(timeout);
-  }, [count]);
+  }, [count, duration, value]);
   return (
     <div className={styles.Co2Display}>
       <p>{count}kg</p>
     </div>
   );
+};
+
+const treeImage = count => {
+  var arr = [...Array(count).keys()];
+  return arr.fill(<img src={tree} className={styles.tree} alt="Ecosystem" />);
 };
 
 const CalculatorComponent = () => {
@@ -74,7 +82,7 @@ const CalculatorComponent = () => {
           </p>
           <div className={styles.treeWrapper}>
             <Co2Display value={customer?.co2SavedKg} duration={120} />
-            <img src={tree} className={styles.tree} alt="Ecosystem" />
+            {treeImage(1)}
           </div>
         </div>
         <div className={styles.displayWrapper}>
@@ -83,9 +91,7 @@ const CalculatorComponent = () => {
           </p>
           <div className={styles.treeWrapper}>
             <Co2Display value={merchant?.co2SavedKg} duration={5} />
-            <img src={tree} className={styles.tree} alt="Ecosystem" />
-            <img src={tree} className={styles.tree} alt="Ecosystem" />
-            <img src={tree} className={styles.tree} alt="Ecosystem" />
+            {treeImage(3)}
           </div>
         </div>
         <div className={styles.displayWrapper}>
@@ -94,12 +100,7 @@ const CalculatorComponent = () => {
           </p>
           <div className={styles.treeWrapper}>
             <Co2Display value={merchant?.co2SavedKg} duration={5} />
-            <img src={tree} className={styles.tree} alt="Ecosystem" />
-            <img src={tree} className={styles.tree} alt="Ecosystem" />
-            <img src={tree} className={styles.tree} alt="Ecosystem" />
-            <img src={tree} className={styles.tree} alt="Ecosystem" />
-            <img src={tree} className={styles.tree} alt="Ecosystem" />
-            <img src={tree} className={styles.tree} alt="Ecosystem" />
+            {treeImage(6)}
           </div>
         </div>
       </div>
