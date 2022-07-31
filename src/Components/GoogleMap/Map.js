@@ -5,7 +5,7 @@ import Marker from "./Marker";
 const Map = ({ cords }) => {
   const defaultProps = {
     center: cords[0],
-    zoom: 12,
+    zoom: 11,
   };
 
   const apiIsLoaded = (map, maps) => {
