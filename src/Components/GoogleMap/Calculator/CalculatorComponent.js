@@ -90,7 +90,9 @@ const treeImage = (count) => {
 
 const CalculatorComponent = () => {
   const [start, setStart] = useState(false);
-  const [carQuery, setCarQuery] = useState("");
+  const [carQuery, setCarQuery] = useState(
+    "https://discodata.eea.europa.eu/sql?query=SELECT%20TOP%201%20%22Enedc%20(g%2Fkm)%22%20FROM%20%5BCO2Emission%5D.%5Blatest%5D.%5Bco2cars%5D%20WHERE%20Mk%3D%27FIAT%27%20and%20Cn%3D%27500%27%20and%20year%3D%272018%27%20order%20by%20%22Enedc%20(g%2Fkm)%22%20desc&p=1&nrOfHits=100&mail=null&schema=null"
+  );
   const [co2Value, setCo2Value] = useState(161);
   const handleConfetti = () => {
     setStart(!start);
@@ -141,7 +143,9 @@ const CalculatorComponent = () => {
           <p className={styles.title}>Do you have a car? Select!</p>
           <select className={styles.select} onChange={handleCarQuery}>
             {cars.map(({ car, value }) => (
-              <option value={value}>{car}</option>
+              <option className={styles.options} value={value}>
+                {car}
+              </option>
             ))}
           </select>
         </div>
