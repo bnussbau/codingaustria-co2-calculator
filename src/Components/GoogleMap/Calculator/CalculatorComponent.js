@@ -46,31 +46,13 @@ const cars = [
       "https://discodata.eea.europa.eu/sql?query=SELECT%20TOP%201%20%22Enedc%20(g%2Fkm)%22%20FROM%20%5BCO2Emission%5D.%5Blatest%5D.%5Bco2cars%5D%20WHERE%20Mk%3D%27Dacia%27%20and%20Cn%3D%27Sandero%27%20and%20year%3D%272020%27%20order%20by%20%22Enedc%20(g%2Fkm)%22%20desc&p=1&nrOfHits=100&mail=null&schema=null",
   },
 ];
-const mockData = {
-  route: [
-    {
-      lat: 48.215739883024661,
-      lng: 16.370281800013927,
-    },
-    {
-      lat: 48.215739883024661,
-      lng: 17.370281800013927,
-    },
-  ],
-  merchant: {
-    co2SavedKg: 200.8,
-  },
-  customer: {
-    co2SavedKg: 1.28,
-  },
-};
 
 const Co2Display = ({ value, duration = 5, isWalking, isPickUp }) => {
   const [count, setCount] = useState(value ? Math.round(value / 2) : "- ");
   useEffect(() => {
     const timeout = setTimeout(() => {
       if (count < value) {
-        setCount((prev) => prev + 1);
+        setCount(prev => prev + 1);
       }
     }, duration);
 
@@ -83,7 +65,7 @@ const Co2Display = ({ value, duration = 5, isWalking, isPickUp }) => {
   );
 };
 
-const treeImage = (count) => {
+const treeImage = count => {
   var arr = [...Array(count).keys()];
   return arr.fill(<img src={tree} className={styles.tree} alt="Ecosystem" />);
 };
@@ -119,16 +101,14 @@ const CalculatorComponent = () => {
   ];
 
   /***** API CALLS for emission *****/
-  const getApiData = async (carQuery) => {
-    const { results } = await fetch(carQuery).then((response) =>
-      response.json()
-    );
+  const getApiData = async carQuery => {
+    const { results } = await fetch(carQuery).then(response => response.json());
     if (results.length > 0) {
       setCo2Value(results[0]["Enedc (g/km)"]);
     }
   };
 
-  const handleCarQuery = (e) => {
+  const handleCarQuery = e => {
     setCarQuery(e.target.value);
   };
 
