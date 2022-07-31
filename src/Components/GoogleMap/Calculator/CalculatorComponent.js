@@ -24,15 +24,6 @@ const mockData = {
   },
 };
 
-const cords = [
-  { lat: 48.215739883024661, lng: 16.370281800013927 },
-  /*  { lat: 48.23254325432884, lng: 16.347499612663768 },
-  { lat: 48.255521473262206, lng: 16.34578299896641 },
-  { lat: 48.15298340794733, lng: 16.36167830749079 },
-  { lat: 48.240235287643756, lng: 16.485153472778876 }, */
-  { lat: 48.20628991639443, lng: 16.34524805104454 },
-];
-
 const Co2Display = ({ value, duration = 5, isWalking }) => {
   console.log("valuess", value);
   const [count, setCount] = useState(value ? 0 : "- ");
@@ -74,7 +65,14 @@ const CalculatorComponent = () => {
   const delivery = urlParams.searchParams.get("delivery");
   const [day, bundle] = urlParams.searchParams.get("bundle")?.split(";") || [];
   const total = urlParams.searchParams.get("total");
-
+  const lat_shop = urlParams.searchParams.get("lat_shop");
+  const lng_shop = urlParams.searchParams.get("lng_shop");
+  const lat_home = urlParams.searchParams.get("lat_home");
+  const lng_home = urlParams.searchParams.get("lng_home");
+  const cords = [
+    { lat: Number(lat_shop), lng: Number(lng_shop) },
+    { lat: Number(lat_home), lng: Number(lng_home) },
+  ];
   return (
     <div className={styles.hero}>
       <div className={styles.container}>
