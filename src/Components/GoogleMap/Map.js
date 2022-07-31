@@ -2,7 +2,7 @@ import React from "react";
 import GoogleMapReact from "google-map-react";
 import Marker from "./Marker";
 
-const SimpleMap = ({ cords }) => {
+const Map = ({ cords }) => {
   const defaultProps = {
     center: cords[0],
     zoom: 12,
@@ -15,7 +15,7 @@ const SimpleMap = ({ cords }) => {
     const origin = cords[0];
     const destination = cords[cords.length - 1];
 
-    const waypoints = cords.map((cord) => {
+    const waypoints = cords.map(cord => {
       return {
         location: {
           lat: cord.lat,
@@ -71,4 +71,4 @@ const SimpleMap = ({ cords }) => {
   );
 };
 
-export default SimpleMap;
+export default Map;
