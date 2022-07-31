@@ -4,7 +4,48 @@ import Map from "../Map";
 import tree from "../../../ecosystem.png";
 import Confetti from "./Confetti";
 import classNames from "classnames";
-
+const cars = [
+  {
+    car: "Fiat 500",
+    value:
+      "https://discodata.eea.europa.eu/sql?query=SELECT%20TOP%201%20%22Enedc%20(g%2Fkm)%22%20FROM%20%5BCO2Emission%5D.%5Blatest%5D.%5Bco2cars%5D%20WHERE%20Mk%3D%27FIAT%27%20and%20Cn%3D%27500%27%20and%20year%3D%272018%27%20order%20by%20%22Enedc%20(g%2Fkm)%22%20desc&p=1&nrOfHits=100&mail=null&schema=null",
+  },
+  {
+    car: "Skoda Octavia",
+    value:
+      "https://discodata.eea.europa.eu/sql?query=SELECT%20TOP%201%20%22Enedc%20(g%2Fkm)%22%20FROM%20%5BCO2Emission%5D.%5Blatest%5D.%5Bco2cars%5D%20WHERE%20Mk%3D%27Skoda%27%20and%20Cn%3D%27Octavia%27%20and%20year%3D%272020%27%20order%20by%20%22Enedc%20(g%2Fkm)%22%20desc&p=1&nrOfHits=100&mail=null&schema=null",
+  },
+  {
+    car: "VW Golf",
+    value:
+      "https://discodata.eea.europa.eu/sql?query=SELECT%20TOP%201%20%22Enedc%20(g%2Fkm)%22%20FROM%20%5BCO2Emission%5D.%5Blatest%5D.%5Bco2cars%5D%20WHERE%20Mk%3D%27VOLKSWAGEN%27%20and%20Cn%3D%27Golf%27%20and%20year%3D%272020%27%20order%20by%20%22Enedc%20(g%2Fkm)%22%20desc&p=1&nrOfHits=100&mail=null&schema=null",
+  },
+  {
+    car: "VW T-Roc",
+    value:
+      "https://discodata.eea.europa.eu/sql?query=SELECT%20TOP%201%20%22Enedc%20(g%2Fkm)%22%20FROM%20%5BCO2Emission%5D.%5Blatest%5D.%5Bco2cars%5D%20WHERE%20Mk%3D%27VOLKSWAGEN%27%20and%20Cn%3D%27T-Roc%27%20and%20year%3D%272020%27%20order%20by%20%22Enedc%20(g%2Fkm)%22%20desc&p=1&nrOfHits=100&mail=null&schema=null",
+  },
+  {
+    car: "Skoda Fabia",
+    value:
+      "https://discodata.eea.europa.eu/sql?query=SELECT%20TOP%201%20%22Enedc%20(g%2Fkm)%22%20FROM%20%5BCO2Emission%5D.%5Blatest%5D.%5Bco2cars%5D%20WHERE%20Mk%3D%27Skoda%27%20and%20Cn%3D%27Fabia%27%20and%20year%3D%272020%27%20order%20by%20%22Enedc%20(g%2Fkm)%22%20desc&p=1&nrOfHits=100&mail=null&schema=null",
+  },
+  {
+    car: "VW Polo",
+    value:
+      "https://discodata.eea.europa.eu/sql?query=SELECT%20TOP%201%20%22Enedc%20(g%2Fkm)%22%20FROM%20%5BCO2Emission%5D.%5Blatest%5D.%5Bco2cars%5D%20WHERE%20Mk%3D%27VOLKSWAGEN%27%20and%20Cn%3D%27Polo%27%20and%20year%3D%272020%27%20order%20by%20%22Enedc%20(g%2Fkm)%22%20desc&p=1&nrOfHits=100&mail=null&schema=null",
+  },
+  {
+    car: "Seat Ibiza",
+    value:
+      "https://discodata.eea.europa.eu/sql?query=SELECT%20TOP%201%20%22Enedc%20(g%2Fkm)%22%20FROM%20%5BCO2Emission%5D.%5Blatest%5D.%5Bco2cars%5D%20WHERE%20Mk%3D%27Seat%27%20and%20Cn%3D%27Ibiza%27%20and%20year%3D%272020%27%20order%20by%20%22Enedc%20(g%2Fkm)%22%20desc&p=1&nrOfHits=100&mail=null&schema=null",
+  },
+  {
+    car: "Dacia Sandero",
+    value:
+      "https://discodata.eea.europa.eu/sql?query=SELECT%20TOP%201%20%22Enedc%20(g%2Fkm)%22%20FROM%20%5BCO2Emission%5D.%5Blatest%5D.%5Bco2cars%5D%20WHERE%20Mk%3D%27Dacia%27%20and%20Cn%3D%27Sandero%27%20and%20year%3D%272020%27%20order%20by%20%22Enedc%20(g%2Fkm)%22%20desc&p=1&nrOfHits=100&mail=null&schema=null",
+  },
+];
 const mockData = {
   route: [
     {
@@ -24,7 +65,7 @@ const mockData = {
   },
 };
 
-const Co2Display = ({ value, duration = 5, isWalking }) => {
+const Co2Display = ({ value, duration = 5, isWalking, isPickUp }) => {
   const [count, setCount] = useState(value ? 0 : "- ");
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -37,7 +78,7 @@ const Co2Display = ({ value, duration = 5, isWalking }) => {
   }, [count, duration, value]);
   return (
     <div className={styles.Co2Display}>
-      <p>{isWalking ? 0 : count}g</p>
+      <p>{isWalking ? 0 : isPickUp ? value : count}g</p>
     </div>
   );
 };
@@ -49,19 +90,21 @@ const treeImage = (count) => {
 
 const CalculatorComponent = () => {
   const [start, setStart] = useState(false);
-  const { route, merchant, customer } = mockData;
+  const [carQuery, setCarQuery] = useState("");
+  const [co2Value, setCo2Value] = useState(161);
   const handleConfetti = () => {
     setStart(!start);
     setInterval(() => {
       setStart(false);
     }, 3000);
   };
+
+  /***** PARAMS *****/
   const url = document.location.href;
   const urlParams = new URL(url);
-
   const deliveryType = urlParams.searchParams.get("deliverytype");
   const pickup = urlParams.searchParams.get("pickwalk");
-  const delivery = urlParams.searchParams.get("delivery");
+  const carPickup = urlParams.searchParams.get("car_pickup");
   const [day, bundle] = urlParams.searchParams.get("bundle")?.split(";") || [];
   const total = urlParams.searchParams.get("total");
   const lat_shop = urlParams.searchParams.get("lat_shop");
@@ -72,9 +115,37 @@ const CalculatorComponent = () => {
     { lat: Number(lat_shop), lng: Number(lng_shop) },
     { lat: Number(lat_home), lng: Number(lng_home) },
   ];
+
+  /***** API CALLS for emission *****/
+  const getApiData = async (carQuery) => {
+    const { results } = await fetch(carQuery).then((response) =>
+      response.json()
+    );
+    if (results.length > 0) {
+      setCo2Value(results[0]["Enedc (g/km)"]);
+    }
+  };
+
+  const handleCarQuery = (e) => {
+    setCarQuery(e.target.value);
+  };
+
+  useEffect(() => {
+    getApiData(carQuery);
+  }, [carQuery]);
+
   return (
     <div className={styles.hero}>
       <div className={styles.container}>
+        <div className={styles.displayWrapper}>
+          <p className={styles.title}>Do you have a car? Select!</p>
+          <select className={styles.select} onChange={handleCarQuery}>
+            {cars.map(({ car, value }) => (
+              <option value={value}>{car}</option>
+            ))}
+          </select>
+        </div>
+
         {/* walking option */}
         {!!+pickup && (
           <div className={styles.pickupWrapper}>
@@ -94,10 +165,14 @@ const CalculatorComponent = () => {
           })}
         >
           <p className={styles.title}>
-            The amount of CO&#178; you saved with this purchase.
+            The amount of CO&#178; you spend by picking up with your car.
           </p>
           <div className={styles.treeWrapper}>
-            <Co2Display value={delivery} duration={5} />
+            <Co2Display
+              isPickUp
+              value={Math.round(carPickup / 123) * co2Value}
+              duration={5}
+            />
             {treeImage(1)}
           </div>
         </div>

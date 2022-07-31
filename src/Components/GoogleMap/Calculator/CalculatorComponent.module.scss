@@ -27,6 +27,21 @@
     background-color: rgb(231, 242, 240);
   }
 }
+
+.select {
+  padding: 5px;
+  font-size: 14px;
+  line-height: 1.3;
+  height: 65px;
+  box-sizing: border-box;
+  margin-bottom: $sm;
+  border: 1px solid $blue;
+  box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
+  border-radius: 5px;
+
+  background-color: transparent;
+  width: 100%;
+}
 .pickupWrapper {
   @include pulse;
 }
