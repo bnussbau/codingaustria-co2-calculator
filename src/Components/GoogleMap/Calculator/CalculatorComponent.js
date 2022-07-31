@@ -25,7 +25,6 @@ const mockData = {
 };
 
 const Co2Display = ({ value, duration = 5, isWalking }) => {
-  console.log("valuess", value);
   const [count, setCount] = useState(value ? 0 : "- ");
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -126,7 +125,7 @@ const CalculatorComponent = () => {
             The amount of CO&#178; the store saved the last month.
           </p>
           <div className={styles.treeWrapper}>
-            <Co2Display value={total} duration={2} />
+            <Co2Display value={total} duration={1} />
             {treeImage(5)}
           </div>
         </div>
