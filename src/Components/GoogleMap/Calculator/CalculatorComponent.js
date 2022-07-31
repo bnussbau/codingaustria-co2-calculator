@@ -47,7 +47,7 @@ const Co2Display = ({ value, duration = 5, isWalking }) => {
   }, [count, duration, value]);
   return (
     <div className={styles.Co2Display}>
-      <p>{isWalking ? 0 : count}kg</p>
+      <p>{isWalking ? 0 : count}g</p>
     </div>
   );
 };
